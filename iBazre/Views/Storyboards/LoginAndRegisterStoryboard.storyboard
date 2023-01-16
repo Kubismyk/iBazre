@@ -12,7 +12,7 @@
         <!--Login View Controller-->
         <scene sceneID="IrP-Y6-mqP">
             <objects>
-                <viewController id="LHh-Qn-YZ2" customClass="LoginViewController" customModule="iBazre" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LHh-Qn-YZ2" customClass="LoginViewController" customModule="iBazre" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NQh-OI-oSd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -152,7 +152,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Don't have an account? create one"/>
                                 <connections>
-                                    <action selector="GoToRegister:" destination="LHh-Qn-YZ2" eventType="touchUpInside" id="ErN-nw-Hls"/>
+                                    <action selector="goToRegisterButton:" destination="LHh-Qn-YZ2" eventType="touchUpInside" id="qJA-YC-bPM"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -186,7 +186,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jkd-2V-lmU" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-643" y="53"/>
+            <point key="canvasLocation" x="-630" y="58"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="9XA-iw-BJD">
@@ -243,7 +243,7 @@
                                         <color key="backgroundColor" name="MainColor"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Register"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
                                                 <real key="value" value="0.25"/>
@@ -326,6 +326,9 @@
                                 <color key="tintColor" name="MyGrey"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Log in"/>
+                                <connections>
+                                    <action selector="switchViewControllerToLogin:" destination="Kre-zW-v2I" eventType="touchUpInside" id="qd8-rz-e1C"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zS7-t3-ZyL">
                                 <rect key="frame" x="20" y="74" width="374" height="25.5"/>

@@ -60,5 +60,8 @@ class RegisterViewController: UIViewController {
     }
     @IBAction func registerButoon(_ sender: UIButton) {
     }
+    @IBAction func switchViewControllerToLogin(_ sender: UIButton) {
+        self.presentingViewController?.dismiss(animated: true)
+    }
     
 }

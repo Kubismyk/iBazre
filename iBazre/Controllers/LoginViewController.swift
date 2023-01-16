@@ -32,5 +32,8 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButton(_ sender: UIButton) {
     }
+    @IBAction func goToRegisterButton(_ sender: UIButton) {
+        switchScreen(storyboardName: "LoginAndRegisterStoryboard", viewControllerName: "RegisterViewController")
+    }
     
 }

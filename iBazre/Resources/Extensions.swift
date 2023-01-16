@@ -363,3 +363,29 @@ extension UIColor {
    }
 }
 
+
+
+extension UIViewController {
+//    func switchScreen(storyboardName:String,viewControllerName:String,vcc:UIViewController) {
+//        let mainStoryboard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
+//        if let viewController = mainStoryboard.instantiateViewController(withIdentifier: viewControllerName) as? vcc {
+//            self.present(viewController, animated: true, completion: nil)
+//        }
+//    }
+    
+    
+//    func switchScreen<T: UIViewController>(storyboardName:String,viewControllerName:String,vcc:T) {
+//        let mainStoryboard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
+//        if let viewController = mainStoryboard.instantiateViewController(withIdentifier: viewControllerName) as? T {
+//            self.present(viewController, animated: true, completion: nil)
+//        }
+//    }
+    
+    func switchScreen(storyboardName: String, viewControllerName: String) {
+        let mainStoryboard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
+        let viewController = mainStoryboard.instantiateViewController(withIdentifier: viewControllerName)
+        viewController.modalPresentationStyle = .fullScreen
+        self.present(viewController, animated: true, completion: nil)
+    }
+}
+
