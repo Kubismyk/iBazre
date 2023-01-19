@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>574028374196-560hictkir9u7vfb71j5b6au0es801bc.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.574028374196-560hictkir9u7vfb71j5b6au0es801bc</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBhXYpG2v4UoELqdDAEWUydlL4S84SwnHY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>574028374196</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>-.iBazre</string>
+	<key>PROJECT_ID</key>
+	<string>ibazre</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ibazre.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:574028374196:ios:1cc181def9423e66db77e1</string>
+</dict>
+</plist>

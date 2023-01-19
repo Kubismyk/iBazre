@@ -23,6 +23,12 @@
 		58955D54294B5C0D0060C43C /* iBazre.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58955D52294B5C0D0060C43C /* iBazre.xcdatamodeld */; };
 		58955D56294B5C0E0060C43C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58955D55294B5C0E0060C43C /* Assets.xcassets */; };
 		58955D59294B5C0E0060C43C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58955D57294B5C0E0060C43C /* LaunchScreen.storyboard */; };
+		58F66E182979112E00CB8D36 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 58F66E172979112E00CB8D36 /* FirebaseAuth */; };
+		58F66E1A2979112E00CB8D36 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 58F66E192979112E00CB8D36 /* FirebaseDatabase */; };
+		58F66E1C2979112E00CB8D36 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 58F66E1B2979112E00CB8D36 /* FirebaseFirestore */; };
+		58F66E1E2979112E00CB8D36 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 58F66E1D2979112E00CB8D36 /* FirebaseMessaging */; };
+		58F66E202979112E00CB8D36 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 58F66E1F2979112E00CB8D36 /* FirebaseStorage */; };
+		58F66E22297911DD00CB8D36 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58F66E21297911DD00CB8D36 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +49,7 @@
 		58955D55294B5C0E0060C43C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		58955D58294B5C0E0060C43C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		58955D5A294B5C0E0060C43C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58F66E21297911DD00CB8D36 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +57,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58F66E1A2979112E00CB8D36 /* FirebaseDatabase in Frameworks */,
+				58F66E1C2979112E00CB8D36 /* FirebaseFirestore in Frameworks */,
+				58F66E1E2979112E00CB8D36 /* FirebaseMessaging in Frameworks */,
 				58116CC2296C9DBB00106CB1 /* SideMenu in Frameworks */,
+				58F66E182979112E00CB8D36 /* FirebaseAuth in Frameworks */,
+				58F66E202979112E00CB8D36 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +159,7 @@
 				583AF3682951FBD50051BAEC /* ViewModels */,
 				583AF3672951FBC80051BAEC /* Views */,
 				58955D5A294B5C0E0060C43C /* Info.plist */,
+				58F66E21297911DD00CB8D36 /* GoogleService-Info.plist */,
 				58955D52294B5C0D0060C43C /* iBazre.xcdatamodeld */,
 			);
 			path = iBazre;
@@ -170,6 +183,11 @@
 			name = iBazre;
 			packageProductDependencies = (
 				58116CC1296C9DBB00106CB1 /* SideMenu */,
+				58F66E172979112E00CB8D36 /* FirebaseAuth */,
+				58F66E192979112E00CB8D36 /* FirebaseDatabase */,
+				58F66E1B2979112E00CB8D36 /* FirebaseFirestore */,
+				58F66E1D2979112E00CB8D36 /* FirebaseMessaging */,
+				58F66E1F2979112E00CB8D36 /* FirebaseStorage */,
 			);
 			productName = iBazre;
 			productReference = 58955D46294B5C0D0060C43C /* iBazre.app */;
@@ -201,6 +219,7 @@
 			mainGroup = 58955D3D294B5C0D0060C43C;
 			packageReferences = (
 				58116CC0296C9DBB00106CB1 /* XCRemoteSwiftPackageReference "SideMenu" */,
+				58F66E162979112E00CB8D36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 58955D47294B5C0D0060C43C /* Products */;
 			projectDirPath = "";
@@ -221,6 +240,7 @@
 				58116CBF29658BB300106CB1 /* TableViewCell.xib in Resources */,
 				58955D56294B5C0E0060C43C /* Assets.xcassets in Resources */,
 				58955D51294B5C0D0060C43C /* Main.storyboard in Resources */,
+				58F66E22297911DD00CB8D36 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +490,14 @@
 				kind = branch;
 			};
 		};
+		58F66E162979112E00CB8D36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -477,6 +505,31 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 58116CC0296C9DBB00106CB1 /* XCRemoteSwiftPackageReference "SideMenu" */;
 			productName = SideMenu;
+		};
+		58F66E172979112E00CB8D36 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58F66E162979112E00CB8D36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		58F66E192979112E00CB8D36 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58F66E162979112E00CB8D36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		58F66E1B2979112E00CB8D36 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58F66E162979112E00CB8D36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		58F66E1D2979112E00CB8D36 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58F66E162979112E00CB8D36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		58F66E1F2979112E00CB8D36 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58F66E162979112E00CB8D36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 

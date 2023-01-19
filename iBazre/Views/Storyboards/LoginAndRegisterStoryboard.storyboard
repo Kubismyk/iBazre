@@ -191,7 +191,7 @@
         <!--Register View Controller-->
         <scene sceneID="9XA-iw-BJD">
             <objects>
-                <viewController storyboardIdentifier="RegisterViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Kre-zW-v2I" customClass="RegisterViewController" customModule="Clothe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Kre-zW-v2I" customClass="RegisterViewController" customModule="iBazre" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="27M-UL-gAG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
