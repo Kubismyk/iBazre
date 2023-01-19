@@ -59,6 +59,7 @@ class RegisterViewController: UIViewController {
         termsIsAccepted = !termsIsAccepted
     }
     @IBAction func registerButoon(_ sender: UIButton) {
+        self.emailField.text?.isValidEmail()
     }
     @IBAction func switchViewControllerToLogin(_ sender: UIButton) {
         self.presentingViewController?.dismiss(animated: true)

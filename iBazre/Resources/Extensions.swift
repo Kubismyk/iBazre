@@ -345,6 +345,23 @@ enum Vibration {
       }
   }
 
+
+extension String {
+    func isValidPassword() -> Bool {
+        // password should be at least 8 characters long
+        // and contain at least one uppercase letter, one lowercase letter, and one digit
+        let passwordRegex = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$"
+        return NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: self)
+    }
+
+    func isValidEmail() -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: self)
+    }
+}
+
+
+
 extension UIColor {
    convenience init(red: Int, green: Int, blue: Int) {
        assert(red >= 0 && red <= 255, "Invalid red component")
@@ -366,21 +383,6 @@ extension UIColor {
 
 
 extension UIViewController {
-//    func switchScreen(storyboardName:String,viewControllerName:String,vcc:UIViewController) {
-//        let mainStoryboard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
-//        if let viewController = mainStoryboard.instantiateViewController(withIdentifier: viewControllerName) as? vcc {
-//            self.present(viewController, animated: true, completion: nil)
-//        }
-//    }
-    
-    
-//    func switchScreen<T: UIViewController>(storyboardName:String,viewControllerName:String,vcc:T) {
-//        let mainStoryboard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
-//        if let viewController = mainStoryboard.instantiateViewController(withIdentifier: viewControllerName) as? T {
-//            self.present(viewController, animated: true, completion: nil)
-//        }
-//    }
-    
     func switchScreen(storyboardName: String, viewControllerName: String) {
         let mainStoryboard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
         let viewController = mainStoryboard.instantiateViewController(withIdentifier: viewControllerName)
