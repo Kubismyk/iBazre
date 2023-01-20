@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+
 
 class RegisterViewController: UIViewController {
     @IBOutlet weak var usernameField: UITextField!
@@ -13,6 +15,8 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var repeatPasswordField: UITextField!
     @IBOutlet weak var termsButton: UIButton!
+    @IBOutlet weak var errorLabel: UILabel!
+    
     
     
     var termsIsAccepted:Bool = false {
@@ -58,11 +62,88 @@ class RegisterViewController: UIViewController {
     @IBAction func iAgreeButton(_ sender: UIButton) {
         termsIsAccepted = !termsIsAccepted
     }
+    
+
     @IBAction func registerButoon(_ sender: UIButton) {
-        self.emailField.text?.isValidEmail()
+        fieldsValidationAndUserAuth()
+
     }
     @IBAction func switchViewControllerToLogin(_ sender: UIButton) {
         self.presentingViewController?.dismiss(animated: true)
     }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    private func fieldsValidationAndUserAuth(){
+        var username = usernameField.text!
+        var password = passwordField.text!
+        var email = emailField.text!
+        var repeatPassword = repeatPasswordField.text!
+        
+        
+        if password != repeatPassword {
+            password = ""
+            passwordField.attributedPlaceholder = NSAttributedString(
+                string: "password",
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.5)]
+            )
+            repeatPassword = ""
+            repeatPasswordField.attributedPlaceholder = NSAttributedString(
+                string: "password doesn't match",
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.red.withAlphaComponent(0.5)]
+            )
+        }
+        if email.isValidEmail() {
+            print("valid")
+        } else {
+            email = ""
+            emailField.attributedPlaceholder = NSAttributedString(
+                string: "email not valid",
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.red.withAlphaComponent(0.5)]
+            )
+        }
+        if password.isValidPassword() {
+            print("valid")
+        } else {
+            password = ""
+            passwordField.attributedPlaceholder = NSAttributedString(
+                string: "password not valid",
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.red.withAlphaComponent(0.5)]
+            )
+        }
+        
+        if termsIsAccepted{
+            errorLabel.alpha = 0
+        } else {
+            errorLabel.textColor = .red
+            errorLabel.alpha = 1
+            errorLabel.text = "read and accept terms of services"
+        }
+        
+        if email.isValidEmail() && password.isValidPassword() && password == repeatPassword && termsIsAccepted {
+            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                guard let result = authResult, error == nil else {
+                    self.errorLabel.text = "error creating user"
+                    return
+                }
+                let user = result.user
+                print("user created \(user)")
+                goToFeed()
+            }
+        }
+
+    }
     
 }
+

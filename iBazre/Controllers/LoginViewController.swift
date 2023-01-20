@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
 
@@ -31,9 +32,28 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func loginButton(_ sender: UIButton) {
+        var email = loginField.text!
+        var password = passwordField.text!
+        
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+            guard let result = authResult, error == nil else {
+                print("failed to log in")
+                return
+            }
+            let user = result.user
+            print("user: \(user) logged succesfully")
+
+            goToFeed()
+        }
+        
     }
     @IBAction func goToRegisterButton(_ sender: UIButton) {
         switchScreen(storyboardName: "LoginAndRegisterStoryboard", viewControllerName: "RegisterViewController")
     }
     
+    
+
+    
 }
+
+

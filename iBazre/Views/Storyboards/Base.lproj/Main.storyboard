@@ -26,7 +26,7 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="C4Y-Ii-WmV">
             <objects>
-                <tabBarController id="eOK-i4-jAH" customClass="TabBarViewController" customModule="iBazre" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="feedVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eOK-i4-jAH" customClass="TabBarViewController" customModule="iBazre" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0WJ-s6-Gxe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -123,10 +123,10 @@
             </objects>
             <point key="canvasLocation" x="2087" y="-910"/>
         </scene>
-        <!--View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="tfs-DK-SHB">
             <objects>
-                <viewController id="dU9-cf-9Wo" sceneMemberID="viewController">
+                <viewController id="dU9-cf-9Wo" customClass="MenuViewController" customModule="iBazre" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xWw-pw-R6V">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -139,6 +139,9 @@
                                 <color key="tintColor" systemColor="systemRedColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Log Out"/>
+                                <connections>
+                                    <action selector="signOut:" destination="dU9-cf-9Wo" eventType="touchUpInside" id="hmO-Uz-JSg"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XsG-Ja-6tF"/>

@@ -29,6 +29,8 @@
 		58F66E1E2979112E00CB8D36 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 58F66E1D2979112E00CB8D36 /* FirebaseMessaging */; };
 		58F66E202979112E00CB8D36 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 58F66E1F2979112E00CB8D36 /* FirebaseStorage */; };
 		58F66E22297911DD00CB8D36 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58F66E21297911DD00CB8D36 /* GoogleService-Info.plist */; };
+		58F66E24297A2CFF00CB8D36 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F66E23297A2CFF00CB8D36 /* MenuViewController.swift */; };
+		58F66E26297B503100CB8D36 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F66E25297B503100CB8D36 /* Utility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		58955D58294B5C0E0060C43C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		58955D5A294B5C0E0060C43C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58F66E21297911DD00CB8D36 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		58F66E23297A2CFF00CB8D36 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		58F66E25297B503100CB8D36 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,7 @@
 				58116CBA2965730900106CB1 /* FeedViewController.swift */,
 				58116CBC29658BB300106CB1 /* TableViewCell.swift */,
 				583C4398296D9C8000923A35 /* TabBarViewController.swift */,
+				58F66E23297A2CFF00CB8D36 /* MenuViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -112,6 +117,7 @@
 				58955D49294B5C0D0060C43C /* AppDelegate.swift */,
 				58955D4B294B5C0D0060C43C /* SceneDelegate.swift */,
 				587452B82973554A00B7994B /* Extensions.swift */,
+				58F66E25297B503100CB8D36 /* Utility.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -255,9 +261,11 @@
 				58955D54294B5C0D0060C43C /* iBazre.xcdatamodeld in Sources */,
 				58116CBE29658BB300106CB1 /* TableViewCell.swift in Sources */,
 				58955D4E294B5C0D0060C43C /* ViewController.swift in Sources */,
+				58F66E24297A2CFF00CB8D36 /* MenuViewController.swift in Sources */,
 				58955D4A294B5C0D0060C43C /* AppDelegate.swift in Sources */,
 				583C4399296D9C8000923A35 /* TabBarViewController.swift in Sources */,
 				583AF3702951FF3B0051BAEC /* RegisterViewController.swift in Sources */,
+				58F66E26297B503100CB8D36 /* Utility.swift in Sources */,
 				583AF36E2951FF300051BAEC /* LoginViewController.swift in Sources */,
 				58955D4C294B5C0D0060C43C /* SceneDelegate.swift in Sources */,
 				58116CBB2965730900106CB1 /* FeedViewController.swift in Sources */,

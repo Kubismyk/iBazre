@@ -330,7 +330,7 @@
                                     <action selector="switchViewControllerToLogin:" destination="Kre-zW-v2I" eventType="touchUpInside" id="qd8-rz-e1C"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.34999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zS7-t3-ZyL">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zS7-t3-ZyL">
                                 <rect key="frame" x="20" y="74" width="374" height="25.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
@@ -365,6 +365,7 @@
                     </view>
                     <connections>
                         <outlet property="emailField" destination="u0V-GR-Mbc" id="BJ6-EO-Mdd"/>
+                        <outlet property="errorLabel" destination="zS7-t3-ZyL" id="7WW-M4-hn1"/>
                         <outlet property="passwordField" destination="V9U-OU-lez" id="P43-gx-Iuf"/>
                         <outlet property="repeatPasswordField" destination="8eB-va-rUG" id="4l3-p9-HGX"/>
                         <outlet property="termsButton" destination="fyh-io-X3N" id="7qr-XK-Ice"/>
