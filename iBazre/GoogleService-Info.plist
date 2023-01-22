@@ -30,5 +30,7 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:574028374196:ios:1cc181def9423e66db77e1</string>
+	<key>DATABASE_URL</key>
+	<string>https://ibazre-default-rtdb.europe-west1.firebasedatabase.app</string>
 </dict>
 </plist>

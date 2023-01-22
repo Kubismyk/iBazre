@@ -131,16 +131,28 @@ class RegisterViewController: UIViewController {
             errorLabel.text = "read and accept terms of services"
         }
         
+        
         if email.isValidEmail() && password.isValidPassword() && password == repeatPassword && termsIsAccepted {
-            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-                guard let result = authResult, error == nil else {
-                    self.errorLabel.text = "error creating user"
+            
+            DatabaseManager.shared.emailExsistCheck(with: email) { exists in
+                guard !exists else {
+                    // email exsists so shows error
+                    self.errorLabel.text = "user already exsists"
+                    self.errorLabel.alpha = 1
                     return
                 }
-                let user = result.user
-                print("user created \(user)")
-                goToFeed()
+                FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                    guard let result = authResult, error == nil else {
+                        self.errorLabel.text = "error creating user"
+                        return
+                    }
+                    let user = result.user
+                    DatabaseManager.shared.insertUser(with: User(username: username, emailAdress: email, profilePictureURL: ""))
+                    print("user created \(user)")
+                    goToFeed()
+                }
             }
+            
         }
 
     }
