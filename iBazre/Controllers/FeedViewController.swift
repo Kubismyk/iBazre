@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class FeedViewController: UIViewController {
 
@@ -20,8 +21,29 @@ class FeedViewController: UIViewController {
 
         self.feedTableView.delegate = self
         self.feedTableView.dataSource = self
+        print("current user: \(FirebaseAuth.Auth.auth().currentUser?.uid)")
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        validateAuth()
+    }
+    
+    
+    
+    
+    
+    private func validateAuth(){
+        if FirebaseAuth.Auth.auth().currentUser == nil {
+            let storyboard = UIStoryboard(name: "LoginAndRegisterStoryboard", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: false, completion: nil)
+        }
     }
 }
+
 
 
 
@@ -45,37 +67,56 @@ extension FeedViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        addSwipeControllerLeft(name: "Favorites", color: .systemBlue)
+        addSwipeControllerLeft(name: "Favorites", color: .systemBlue, handleFunction: self.handleMarkAsFavourite)
     }
-//    func tableView(_ tableView: UITableView,
-//                       trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//        // ...
-//    }
+    func tableView(_ tableView: UITableView,
+                       trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        addSwipeControllerRight(name: "archive", color: .magenta, handleFunction: self.handleMoveToArchive)
+    }
     
     private func handleMarkAsFavourite() {
         print("Marked as favourite")
     }
     
+
     
     
-    
-    
-    private func addSwipeControllerLeft(name:String,color:UIColor) -> UISwipeActionsConfiguration{
+    private func addSwipeControllerLeft(name:String,color:UIColor,handleFunction: @escaping ()-> Void) -> UISwipeActionsConfiguration{
         let action = UIContextualAction(style: .normal,
                                         title: name) { [weak self] (action, view, completionHandler) in
-                                            self?.handleMarkAsFavourite()  // I need to create function with accepts another function as a parametre
+                                            handleFunction()
                                             completionHandler(true)
         }
         action.backgroundColor = color
+        
+        
         return UISwipeActionsConfiguration(actions: [action])
+    }
+    
+    private func addSwipeControllerRight(name:String,color:UIColor,handleFunction: @escaping ()-> Void) -> UISwipeActionsConfiguration{
+        func handleMoveToTrash() {
+            print("Moved to trash")
+        }
+        
+        let deleteAction = UIContextualAction(style: .destructive,
+                                        title: "delete") { [weak self] (action, view, completionHandler) in
+                                            handleMoveToTrash()
+                                            completionHandler(true)
+        }
+        
+        let archiveAction = UIContextualAction(style: .normal,
+                                        title: name) { [weak self] (action, view, completionHandler) in
+                                            handleFunction()
+                                            completionHandler(true)
+        }
+        archiveAction.backgroundColor = color
+        
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction,archiveAction])
     }
 
     private func handleMarkAsUnread() {
         print("Marked as unread")
-    }
-
-    private func handleMoveToTrash() {
-        print("Moved to trash")
     }
 
     private func handleMoveToArchive() {

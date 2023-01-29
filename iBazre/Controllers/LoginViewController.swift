@@ -36,7 +36,11 @@ class LoginViewController: UIViewController {
         var email = loginField.text!
         var password = passwordField.text!
         
-        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password,completion:{ [weak self] authResult, error in
+            guard let strongSelf = self else {
+                return
+            }
+            
             guard let result = authResult, error == nil else {
                 print("failed to log in")
                 return
@@ -44,8 +48,8 @@ class LoginViewController: UIViewController {
             let user = result.user
             print("user: \(user) logged succesfully")
 
-            goToFeed()
-        }
+            strongSelf.dismiss(animated: true)
+        })
         
     }
     @IBAction func goToRegisterButton(_ sender: UIButton) {

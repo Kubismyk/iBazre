@@ -141,15 +141,19 @@ class RegisterViewController: UIViewController {
                     self.errorLabel.alpha = 1
                     return
                 }
-                FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
+                    guard let strongSelf = self else {
+                        return
+                    }
                     guard let result = authResult, error == nil else {
-                        self.errorLabel.text = "error creating user"
+                        self?.errorLabel.text = "error creating user"
                         return
                     }
                     let user = result.user
                     DatabaseManager.shared.insertUser(with: User(username: username, emailAdress: email, profilePictureURL: ""))
                     print("user created \(user)")
-                    goToFeed()
+                    strongSelf.dismiss(animated: true)
+                    
                 }
             }
             
