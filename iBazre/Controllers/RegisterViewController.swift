@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import JGProgressHUD
 
 
 class RegisterViewController: UIViewController {
@@ -16,6 +17,8 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var repeatPasswordField: UITextField!
     @IBOutlet weak var termsButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
+    
+    private let spinner = JGProgressHUD(style: .dark)
     
     
     
@@ -133,6 +136,7 @@ class RegisterViewController: UIViewController {
         
         
         if email.isValidEmail() && password.isValidPassword() && password == repeatPassword && termsIsAccepted {
+            spinner.show(in: view)
             
             DatabaseManager.shared.emailExsistCheck(with: email) { exists in
                 guard !exists else {
@@ -145,6 +149,11 @@ class RegisterViewController: UIViewController {
                     guard let strongSelf = self else {
                         return
                     }
+                    
+                    DispatchQueue.main.async {
+                        self!.spinner.dismiss()
+                    }
+                    
                     guard let result = authResult, error == nil else {
                         self?.errorLabel.text = "error creating user"
                         return

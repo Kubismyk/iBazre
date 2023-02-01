@@ -17,7 +17,7 @@ class MenuViewController: UIViewController {
     }
     
     @IBAction func signOut(_ sender: UIButton) {
-        //alert should be added if user clicks by an accident 
+        //alert should be added if user clicks by an accident
         
         let firebaseAuth = Auth.auth()
         do {
