@@ -14,6 +14,8 @@
 		583AF36E2951FF300051BAEC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583AF36D2951FF300051BAEC /* LoginViewController.swift */; };
 		583AF3702951FF3B0051BAEC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583AF36F2951FF3B0051BAEC /* RegisterViewController.swift */; };
 		583C4399296D9C8000923A35 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583C4398296D9C8000923A35 /* TabBarViewController.swift */; };
+		5850EAAC298AFB01004CB3AE /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5850EAAB298AFB01004CB3AE /* ChatViewController.swift */; };
+		5850EAAE298D11F0004CB3AE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5850EAAD298D11F0004CB3AE /* SearchViewController.swift */; };
 		587452B72973511D00B7994B /* LoginAndRegisterStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 587452B62973511D00B7994B /* LoginAndRegisterStoryboard.storyboard */; };
 		587452B92973554A00B7994B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587452B82973554A00B7994B /* Extensions.swift */; };
 		58955D4A294B5C0D0060C43C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58955D49294B5C0D0060C43C /* AppDelegate.swift */; };
@@ -45,6 +47,8 @@
 		583AF36D2951FF300051BAEC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		583AF36F2951FF3B0051BAEC /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		583C4398296D9C8000923A35 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		5850EAAB298AFB01004CB3AE /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		5850EAAD298D11F0004CB3AE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		587452B62973511D00B7994B /* LoginAndRegisterStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginAndRegisterStoryboard.storyboard; sourceTree = "<group>"; };
 		587452B82973554A00B7994B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		58955D46294B5C0D0060C43C /* iBazre.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBazre.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +114,8 @@
 				58116CBC29658BB300106CB1 /* TableViewCell.swift */,
 				583C4398296D9C8000923A35 /* TabBarViewController.swift */,
 				58F66E23297A2CFF00CB8D36 /* MenuViewController.swift */,
+				5850EAAB298AFB01004CB3AE /* ChatViewController.swift */,
+				5850EAAD298D11F0004CB3AE /* SearchViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -275,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5850EAAE298D11F0004CB3AE /* SearchViewController.swift in Sources */,
 				587452B92973554A00B7994B /* Extensions.swift in Sources */,
 				58955D54294B5C0D0060C43C /* iBazre.xcdatamodeld in Sources */,
 				58F66E28297B551400CB8D36 /* DatabaseManager.swift in Sources */,
@@ -285,6 +292,7 @@
 				583C4399296D9C8000923A35 /* TabBarViewController.swift in Sources */,
 				583AF3702951FF3B0051BAEC /* RegisterViewController.swift in Sources */,
 				58F66E26297B503100CB8D36 /* Utility.swift in Sources */,
+				5850EAAC298AFB01004CB3AE /* ChatViewController.swift in Sources */,
 				583AF36E2951FF300051BAEC /* LoginViewController.swift in Sources */,
 				58955D4C294B5C0D0060C43C /* SceneDelegate.swift in Sources */,
 				58116CBB2965730900106CB1 /* FeedViewController.swift in Sources */,

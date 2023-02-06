@@ -18,16 +18,22 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
 
         self.feedTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
-
+        
+        
         self.feedTableView.delegate = self
         self.feedTableView.dataSource = self
         print("current user: \(FirebaseAuth.Auth.auth().currentUser?.uid)")
+        design()
 
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         validateAuth()
+    }
+    
+    private func design(){
+        self.title = "texst"
     }
     
     
@@ -42,6 +48,12 @@ class FeedViewController: UIViewController {
             self.present(vc, animated: false, completion: nil)
         }
     }
+    
+    @IBAction func newConversationButton(_ sender: UIButton) {
+        let vc = SearchViewController()
+        self.present(vc, animated: true, completion: nil)
+    }
+    
 }
 
 
@@ -72,6 +84,15 @@ extension FeedViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         addSwipeControllerRight(name: "archive", color: .magenta, handleFunction: self.handleMoveToArchive)
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let vc = ChatViewController()
+        vc.title = "Zviooo"
+        vc.navigationItem.largeTitleDisplayMode = .never
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
     }
     
     private func handleMarkAsFavourite() {
