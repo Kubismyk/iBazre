@@ -33,7 +33,7 @@ class FeedViewController: UIViewController {
     }
     
     private func design(){
-        self.title = "texst"
+        self.title = "Chats"
     }
     
     
@@ -50,9 +50,10 @@ class FeedViewController: UIViewController {
     }
     
     @IBAction func newConversationButton(_ sender: UIButton) {
-        let vc = SearchViewController()
+        let vc = UINavigationController(rootViewController: SearchViewController())
         self.present(vc, animated: true, completion: nil)
     }
+    @IBOutlet weak var searchBarClick: UISearchBar!
     
 }
 
@@ -88,11 +89,9 @@ extension FeedViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let vc = ChatViewController()
-        vc.title = "Zviooo"
-        vc.navigationItem.largeTitleDisplayMode = .never
+        let vc = UINavigationController(rootViewController: ChatViewController())
         vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
+        self.present(vc, animated: true)
     }
     
     private func handleMarkAsFavourite() {

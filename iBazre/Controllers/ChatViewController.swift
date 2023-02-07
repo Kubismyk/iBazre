@@ -46,11 +46,18 @@ class ChatViewController: MessagesViewController {
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         self.messagesCollectionView.reloadData()
+        self.title = "John Moore"
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), landscapeImagePhone: UIImage(systemName: "chevron.backward"), style: .done, target: self, action: #selector(dismissSelf))
+        }
+    
+    @objc func dismissSelf(){
+        self.dismiss(animated: true)
     }
+}
+
     
 
 
-}
 
 
 extension ChatViewController: MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate {
