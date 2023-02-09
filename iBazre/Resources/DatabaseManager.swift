@@ -51,7 +51,4 @@ struct User{
         safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
         return safeEmail
     }
-    var profilePicutreFileName:String {
-        return "\(emailAdress)_profile_picture.png"
-    }
 }

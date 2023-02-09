@@ -94,20 +94,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Qyd-6u-AXg">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="EbQ-jz-4aS">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="rIJ-Xw-uag">
-                                <rect key="frame" x="20" y="5" width="51" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="7iV-ql-uW4"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="line.3.horizontal" catalog="system"/>
-                                <connections>
-                                    <segue destination="vCo-7K-MZi" kind="presentation" id="zse-im-WPW"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="Ypt-Xy-v4r">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="jhJ-E1-B5f">
                                 <rect key="frame" x="347.5" y="5" width="46.5" height="34"/>
@@ -132,62 +118,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w92-Vb-xXz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2968.115942028986" y="-910.04464285714278"/>
-        </scene>
-        <!--Menu View Controller-->
-        <scene sceneID="tfs-DK-SHB">
-            <objects>
-                <viewController id="dU9-cf-9Wo" customClass="MenuViewController" customModule="iBazre" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="xWw-pw-R6V">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w77-GN-ldA">
-                                <rect key="frame" x="20" y="76" width="75.5" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="31" id="5fs-BR-Hxi"/>
-                                </constraints>
-                                <color key="tintColor" systemColor="systemRedColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Log Out"/>
-                                <connections>
-                                    <action selector="signOut:" destination="dU9-cf-9Wo" eventType="touchUpInside" id="hmO-Uz-JSg"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="XsG-Ja-6tF"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="w77-GN-ldA" firstAttribute="top" secondItem="XsG-Ja-6tF" secondAttribute="top" constant="20" id="5h2-fO-1eH"/>
-                            <constraint firstItem="w77-GN-ldA" firstAttribute="leading" secondItem="XsG-Ja-6tF" secondAttribute="leading" constant="20" id="5ls-R4-1r3"/>
-                            <constraint firstItem="XsG-Ja-6tF" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="w77-GN-ldA" secondAttribute="trailing" symbolic="YES" id="ZL2-h2-G0f"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="Taw-7T-RG9"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="O2k-dR-hPt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2864" y="-1602"/>
-        </scene>
-        <!--Side Menu Navigation Controller-->
-        <scene sceneID="oq2-5l-H8D">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vCo-7K-MZi" customClass="SideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EkV-dz-Lin">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="leftSide" value="YES"/>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <segue destination="dU9-cf-9Wo" kind="relationship" relationship="rootViewController" id="OBG-BZ-M8m"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lxS-tC-ErR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2058" y="-1602"/>
         </scene>
         <!--Item-->
         <scene sceneID="3hz-50-NXz">
@@ -316,7 +246,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="line.3.horizontal" catalog="system" width="128" height="64"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -326,9 +255,6 @@
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

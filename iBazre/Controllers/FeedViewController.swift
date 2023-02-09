@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SideMenu
 import FirebaseAuth
 
 class FeedViewController: UIViewController {
@@ -34,9 +35,14 @@ class FeedViewController: UIViewController {
     
     private func design(){
         self.title = "Chats"
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), landscapeImagePhone: UIImage(systemName: "line.3.horizontal"), style: .done, target: self, action: #selector(openMenu))
     }
     
-    
+    @objc func openMenu(){
+        let menu = SideMenuNavigationController(rootViewController: MenuViewController())
+        menu.leftSide = true
+        present(menu, animated: true, completion: nil)
+    }
     
     
     

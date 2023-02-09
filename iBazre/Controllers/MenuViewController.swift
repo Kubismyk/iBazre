@@ -9,14 +9,23 @@ import UIKit
 import FirebaseAuth
 
 class MenuViewController: UIViewController {
+    
+    private var testButoon:UIButton {
+        let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
+        button.setTitle("Test Button", for: .normal)
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        return button
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .lightGray
+
+        self.view.addSubview(testButoon)
     }
     
-    @IBAction func signOut(_ sender: UIButton) {
+    @objc func buttonAction(sender:UIButton) {
         //alert should be added if user clicks by an accident
         
         let firebaseAuth = Auth.auth()
