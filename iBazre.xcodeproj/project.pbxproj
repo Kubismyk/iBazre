@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58056F4029927DD6002914D9 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58056F3F29927DD6002914D9 /* StorageManager.swift */; };
+		58056F42299438AF002914D9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58056F41299438AF002914D9 /* ProfileViewController.swift */; };
 		58116CBB2965730900106CB1 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58116CBA2965730900106CB1 /* FeedViewController.swift */; };
 		58116CBE29658BB300106CB1 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58116CBC29658BB300106CB1 /* TableViewCell.swift */; };
 		58116CBF29658BB300106CB1 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58116CBD29658BB300106CB1 /* TableViewCell.xib */; };
@@ -41,6 +43,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		58056F3F29927DD6002914D9 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		58056F41299438AF002914D9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		58116CBA2965730900106CB1 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		58116CBC29658BB300106CB1 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		58116CBD29658BB300106CB1 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 				58F66E23297A2CFF00CB8D36 /* MenuViewController.swift */,
 				5850EAAB298AFB01004CB3AE /* ChatViewController.swift */,
 				5850EAAD298D11F0004CB3AE /* SearchViewController.swift */,
+				58056F41299438AF002914D9 /* ProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -135,6 +140,7 @@
 				587452B82973554A00B7994B /* Extensions.swift */,
 				58F66E25297B503100CB8D36 /* Utility.swift */,
 				58F66E27297B551400CB8D36 /* DatabaseManager.swift */,
+				58056F3F29927DD6002914D9 /* StorageManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -288,6 +294,7 @@
 				58116CBE29658BB300106CB1 /* TableViewCell.swift in Sources */,
 				58955D4E294B5C0D0060C43C /* ViewController.swift in Sources */,
 				58F66E24297A2CFF00CB8D36 /* MenuViewController.swift in Sources */,
+				58056F42299438AF002914D9 /* ProfileViewController.swift in Sources */,
 				58955D4A294B5C0D0060C43C /* AppDelegate.swift in Sources */,
 				583C4399296D9C8000923A35 /* TabBarViewController.swift in Sources */,
 				583AF3702951FF3B0051BAEC /* RegisterViewController.swift in Sources */,
@@ -296,6 +303,7 @@
 				583AF36E2951FF300051BAEC /* LoginViewController.swift in Sources */,
 				58955D4C294B5C0D0060C43C /* SceneDelegate.swift in Sources */,
 				58116CBB2965730900106CB1 /* FeedViewController.swift in Sources */,
+				58056F4029927DD6002914D9 /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +453,8 @@
 				DEVELOPMENT_TEAM = A7X427YJGK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iBazre/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a profile picture";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow access to library to add picture";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -474,6 +484,8 @@
 				DEVELOPMENT_TEAM = A7X427YJGK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iBazre/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a profile picture";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow access to library to add picture";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

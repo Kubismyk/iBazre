@@ -44,11 +44,14 @@ extension DatabaseManager {
 struct User{
     let username:String
     let emailAdress:String
-    let profilePictureURL:String
+    var profilePictureURL:String
     
     var safeEmail:String {
         var safeEmail = emailAdress.replacingOccurrences(of: ".", with: "-")
         safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
         return safeEmail
+    }
+    var profilePicutreFileName:String {
+        return "\(emailAdress)_profile_picture.png"
     }
 }

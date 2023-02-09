@@ -36,6 +36,7 @@ class SearchViewController: UIViewController {
         navigationController?.navigationBar.topItem?.titleView = searchBar
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "cancel", style: .done, target: self, action: #selector(dismissSelf))
         view.backgroundColor = .white
+        searchBar.becomeFirstResponder()
     }
     
     @objc func dismissSelf(){
