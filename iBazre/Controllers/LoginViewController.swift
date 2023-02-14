@@ -82,6 +82,11 @@ class LoginViewController: UIViewController {
                 return
             }
             let user = result.user
+            
+            //save email to userdefaults
+            UserDefaults.standard.set(email, forKey: "email")
+            UserDefaults.standard.set(user.uid, forKey: "userUid")
+            
             print("user: \(user) logged succesfully")
 
             strongSelf.dismiss(animated: true)

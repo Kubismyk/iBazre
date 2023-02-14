@@ -17,13 +17,11 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.feedTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         
         
         self.feedTableView.delegate = self
         self.feedTableView.dataSource = self
-        print("current user: \(FirebaseAuth.Auth.auth().currentUser?.uid)")
         design()
 
     }
