@@ -98,6 +98,7 @@ class ChatViewController: MessagesViewController {
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         messageInputBar.delegate = self
+
         messageInputBar.inputTextView.becomeFirstResponder()
         self.messagesCollectionView.reloadData()
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), landscapeImagePhone: UIImage(systemName: "chevron.backward"), style: .done, target: self, action: #selector(dismissSelf))
@@ -124,7 +125,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
         //send message
         if isNewConversation{
             let message = Message(sender: selfSender, messageId: messageId, sentDate: Date(), kind: .text(text))
-            DatabaseManager.shared.createNewConversation(with: isOtherEmail, firstMessage: message) { success in
+            DatabaseManager.shared.createNewConversation(name:self.navigationItem.title ?? "User",with: isOtherEmail, firstMessage: message) { success in
                 if success {
                     print("message sent successfully")
                 }else {

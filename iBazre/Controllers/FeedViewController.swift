@@ -19,7 +19,7 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
         self.feedTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         
-        
+        self.searchBarClick.delegate = self
         self.feedTableView.delegate = self
         self.feedTableView.dataSource = self
         design()
@@ -80,7 +80,17 @@ class FeedViewController: UIViewController {
 
 
 
-
+extension FeedViewController:UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        let vc = SearchViewController()
+        vc.completion = { [weak self] result in
+            print("\(result)")
+            self?.createNewConversation(result: result)
+        }
+        let navVc = UINavigationController(rootViewController: vc)
+        self.present(navVc, animated: true, completion: nil)
+    }
+}
 
 
 
