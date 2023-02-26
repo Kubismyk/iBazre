@@ -54,8 +54,25 @@ class FeedViewController: UIViewController {
     }
     
     @IBAction func newConversationButton(_ sender: UIButton) {
-        let vc = UINavigationController(rootViewController: SearchViewController())
-        self.present(vc, animated: true, completion: nil)
+        let vc = SearchViewController()
+        vc.completion = { [weak self] result in
+            print("\(result)")
+            self?.createNewConversation(result: result)
+        }
+        let navVc = UINavigationController(rootViewController: vc)
+        self.present(navVc, animated: true, completion: nil)
+    }
+    private func createNewConversation(result: [String:String]){
+        guard let name = result["name"],
+              let email = result["mail"] else {
+            return
+        }
+        let vc = ChatViewController(with: email)
+        vc.isNewConversation = true
+        let navVc = UINavigationController(rootViewController: vc)
+        navVc.modalPresentationStyle = .fullScreen
+        navVc.navigationBar.topItem?.title = name
+        self.present(navVc, animated: true)
     }
     @IBOutlet weak var searchBarClick: UISearchBar!
     
@@ -93,7 +110,7 @@ extension FeedViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let vc = UINavigationController(rootViewController: ChatViewController())
+        let vc = UINavigationController(rootViewController: ChatViewController(with: "asd"))
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }

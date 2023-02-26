@@ -9,6 +9,7 @@ import UIKit
 import JGProgressHUD
 
 class SearchViewController: UIViewController {
+    public var completion: (([String:String]) -> (Void))?
     private var users = [[String:String]]()
     private var results = [[String:String]]()
     private var hasFetfched = false
@@ -93,8 +94,15 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+
         
-        // transfer to new convo
+        let targetUserData = results[indexPath.row]
+        
+        dismiss(animated: true) { [weak self] in
+            self?.completion?(targetUserData)
+        }
+        
+        completion?(targetUserData)
     }
 }
 
