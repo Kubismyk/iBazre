@@ -20,6 +20,8 @@
 		5850EAAE298D11F0004CB3AE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5850EAAD298D11F0004CB3AE /* SearchViewController.swift */; };
 		587452B72973511D00B7994B /* LoginAndRegisterStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 587452B62973511D00B7994B /* LoginAndRegisterStoryboard.storyboard */; };
 		587452B92973554A00B7994B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587452B82973554A00B7994B /* Extensions.swift */; };
+		587B86FE29B0DC6D002F431F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 587B86FD29B0DC6D002F431F /* GoogleService-Info.plist */; };
+		5885873029AD7A76006820C9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5885872F29AD7A76006820C9 /* Kingfisher */; };
 		58955D4A294B5C0D0060C43C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58955D49294B5C0D0060C43C /* AppDelegate.swift */; };
 		58955D4C294B5C0D0060C43C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58955D4B294B5C0D0060C43C /* SceneDelegate.swift */; };
 		58955D4E294B5C0D0060C43C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58955D4D294B5C0D0060C43C /* ViewController.swift */; };
@@ -39,7 +41,6 @@
 		58F66E24297A2CFF00CB8D36 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F66E23297A2CFF00CB8D36 /* MenuViewController.swift */; };
 		58F66E26297B503100CB8D36 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F66E25297B503100CB8D36 /* Utility.swift */; };
 		58F66E28297B551400CB8D36 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F66E27297B551400CB8D36 /* DatabaseManager.swift */; };
-		58F66E2A297B577700CB8D36 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58F66E29297B577700CB8D36 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		5850EAAD298D11F0004CB3AE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		587452B62973511D00B7994B /* LoginAndRegisterStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginAndRegisterStoryboard.storyboard; sourceTree = "<group>"; };
 		587452B82973554A00B7994B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		587B86FD29B0DC6D002F431F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		58955D46294B5C0D0060C43C /* iBazre.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBazre.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58955D49294B5C0D0060C43C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58955D4B294B5C0D0060C43C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,7 +69,6 @@
 		58F66E23297A2CFF00CB8D36 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		58F66E25297B503100CB8D36 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		58F66E27297B551400CB8D36 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
-		58F66E29297B577700CB8D36 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +84,7 @@
 				58F66E182979112E00CB8D36 /* FirebaseAuth in Frameworks */,
 				58A0D419298A73810035EFC2 /* Realm in Frameworks */,
 				58F66E202979112E00CB8D36 /* FirebaseStorage in Frameworks */,
+				5885873029AD7A76006820C9 /* Kingfisher in Frameworks */,
 				58A0D41B298A73810035EFC2 /* RealmSwift in Frameworks */,
 				58A0D416298A725B0035EFC2 /* MessageKit in Frameworks */,
 			);
@@ -188,8 +190,8 @@
 				583AF3682951FBD50051BAEC /* ViewModels */,
 				583AF3672951FBC80051BAEC /* Views */,
 				58955D5A294B5C0E0060C43C /* Info.plist */,
+				587B86FD29B0DC6D002F431F /* GoogleService-Info.plist */,
 				58955D52294B5C0D0060C43C /* iBazre.xcdatamodeld */,
-				58F66E29297B577700CB8D36 /* GoogleService-Info.plist */,
 			);
 			path = iBazre;
 			sourceTree = "<group>";
@@ -221,6 +223,7 @@
 				58A0D415298A725B0035EFC2 /* MessageKit */,
 				58A0D418298A73810035EFC2 /* Realm */,
 				58A0D41A298A73810035EFC2 /* RealmSwift */,
+				5885872F29AD7A76006820C9 /* Kingfisher */,
 			);
 			productName = iBazre;
 			productReference = 58955D46294B5C0D0060C43C /* iBazre.app */;
@@ -256,6 +259,7 @@
 				58A0D411298A70F70035EFC2 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 				58A0D414298A725B0035EFC2 /* XCRemoteSwiftPackageReference "MessageKit" */,
 				58A0D417298A73810035EFC2 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				5885872E29AD7A75006820C9 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 58955D47294B5C0D0060C43C /* Products */;
 			projectDirPath = "";
@@ -275,8 +279,8 @@
 				587452B72973511D00B7994B /* LoginAndRegisterStoryboard.storyboard in Resources */,
 				58116CBF29658BB300106CB1 /* TableViewCell.xib in Resources */,
 				58955D56294B5C0E0060C43C /* Assets.xcassets in Resources */,
-				58F66E2A297B577700CB8D36 /* GoogleService-Info.plist in Resources */,
 				58955D51294B5C0D0060C43C /* Main.storyboard in Resources */,
+				587B86FE29B0DC6D002F431F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,6 +541,14 @@
 				kind = branch;
 			};
 		};
+		5885872E29AD7A75006820C9 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		58A0D411298A70F70035EFC2 /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD";
@@ -576,6 +588,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 58116CC0296C9DBB00106CB1 /* XCRemoteSwiftPackageReference "SideMenu" */;
 			productName = SideMenu;
+		};
+		5885872F29AD7A76006820C9 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5885872E29AD7A75006820C9 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		58A0D412298A70F70035EFC2 /* JGProgressHUD */ = {
 			isa = XCSwiftPackageProductDependency;

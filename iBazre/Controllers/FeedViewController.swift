@@ -14,6 +14,7 @@ class FeedViewController: UIViewController {
     @IBOutlet weak var feedTableView: UITableView!
     
     let testData = ["test1","test2","test3"]
+    private var conversations = [Conversation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,12 +24,14 @@ class FeedViewController: UIViewController {
         self.feedTableView.delegate = self
         self.feedTableView.dataSource = self
         design()
-
+        startListeningForConversations()
+        print("1111111")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         validateAuth()
+        print("2222222")
     }
     
     private func design(){
@@ -40,6 +43,7 @@ class FeedViewController: UIViewController {
         let menu = SideMenuNavigationController(rootViewController: MenuViewController())
         menu.leftSide = true
         present(menu, animated: true, completion: nil)
+        print("\(conversations)")
     }
     
     
@@ -52,6 +56,27 @@ class FeedViewController: UIViewController {
             self.present(vc, animated: false, completion: nil)
         }
     }
+    
+    private func startListeningForConversations(){
+        guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
+            return
+        }
+        let safeEmail = DatabaseManager.safeEmail(email: email)
+        print(safeEmail)
+        DatabaseManager.shared.getConversation(with: safeEmail) { [weak self] result in
+            switch result {
+            case .success(let conversations):
+                self?.conversations.append(conversations)
+                print(self?.conversations)
+                DispatchQueue.main.async {
+                    self?.feedTableView.reloadData()
+                }
+            case .failure(let error):
+                print("Error fetching conversation: \(error.localizedDescription)")
+            }
+        }
+    }
+    
     
     @IBAction func newConversationButton(_ sender: UIButton) {
         let vc = SearchViewController()
@@ -98,12 +123,13 @@ extension FeedViewController:UISearchBarDelegate {
 
 extension FeedViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return testData.count
+        return conversations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model = conversations[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell {
-            cell.ttest.text = testData[indexPath.row]
+            cell.config(with: model)
             return cell
         }
         return UITableViewCell()
@@ -118,10 +144,11 @@ extension FeedViewController:UITableViewDelegate,UITableViewDataSource {
         addSwipeControllerRight(name: "archive", color: .magenta, handleFunction: self.handleMoveToArchive)
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = conversations[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        let vc = UINavigationController(rootViewController: ChatViewController(with: "asd"))
+        let vc = UINavigationController(rootViewController: ChatViewController(with: model.otherUserEmail))
         vc.modalPresentationStyle = .fullScreen
+        vc.title = model.name
         self.present(vc, animated: true)
     }
     

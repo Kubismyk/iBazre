@@ -69,6 +69,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="date" destination="3Ts-V6-rKA" id="vZq-ed-ayb"/>
+                <outlet property="lastText" destination="9Fb-Ve-tdX" id="gPm-5E-YPQ"/>
                 <outlet property="testImage" destination="TGm-vq-wRP" id="F81-b8-CAY"/>
                 <outlet property="ttest" destination="saS-qK-fT9" id="Zwk-tS-lJy"/>
             </connections>
