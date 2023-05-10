@@ -8,6 +8,7 @@
 import UIKit
 import MessageKit
 import InputBarAccessoryView
+import AVFoundation
 
 struct Message:MessageType {
     public var sender: SenderType
@@ -69,6 +70,7 @@ class ChatViewController: MessagesViewController {
     }()
     
     public var isNewConversation = false
+    public let conversationId: String?
     public var isOtherEmail:String
     
     private var messages = [Message]()
@@ -77,14 +79,20 @@ class ChatViewController: MessagesViewController {
         guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
             return nil
         }
+        let safeEmail = DatabaseManager.safeEmail(email: email)
         return Sender(photoURL: "",
-               senderId: email,
-               displayName: "JOe Rogan")
+               senderId: safeEmail,
+               displayName: "me")
     }
     
-    init(with email:String){
+    
+    init(with email:String, id:String){
         self.isOtherEmail = email
+        self.conversationId = id
         super.init(nibName: nil, bundle: nil)
+        if let conversationIdd = conversationId {
+            listenForMessages(id: conversationIdd)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -98,7 +106,7 @@ class ChatViewController: MessagesViewController {
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         messageInputBar.delegate = self
-
+        self.title = DatabaseManager.unSafeEmail(safeEmail: isOtherEmail)
         messageInputBar.inputTextView.becomeFirstResponder()
         self.messagesCollectionView.reloadData()
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), landscapeImagePhone: UIImage(systemName: "chevron.backward"), style: .done, target: self, action: #selector(dismissSelf))
@@ -111,6 +119,24 @@ class ChatViewController: MessagesViewController {
     @objc func dismissSelf(){
         self.dismiss(animated: true)
     }
+    
+    private func listenForMessages(id: String){
+        DatabaseManager.shared.getAllMessagesForConversation(with: id) { [weak self] result in
+            switch result {
+            case .success(let messages):
+                guard !messages.isEmpty else {
+                    return
+                }
+                self?.messages = messages
+                DispatchQueue.main.async {
+                    self?.messagesCollectionView.reloadData()
+                }
+            case .failure(let error):
+                print("error fetching messages for conversation: \(error)")
+            }
+        }
+    }
+    
 }
 
     
@@ -157,7 +183,7 @@ extension ChatViewController: MessagesDataSource, MessagesLayoutDelegate, Messag
         if let sender = selfSender {
             return sender
         }
-        fatalError("")
+        fatalError("self sender is nil")
         return Sender(photoURL: "", senderId: "123", displayName: "")
     }
     

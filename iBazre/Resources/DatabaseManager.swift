@@ -7,6 +7,10 @@
 
 import Foundation
 import FirebaseDatabase
+import FirebaseFirestore
+import MessageKit
+
+
 struct Conversation:Codable {
     let id: String
     let latestMessage: LatestMessage
@@ -30,6 +34,15 @@ final class DatabaseManager{
         safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
         return safeEmail
     }
+    
+    static func unSafeEmail(safeEmail:String) -> String {
+        var modifiedEmail = safeEmail.replacingOccurrences(of: "-", with: ".", range: nil)
+        if let range = modifiedEmail.range(of: ".", options: .literal) {
+            modifiedEmail.replaceSubrange(range, with: "@")
+        }
+        return modifiedEmail
+    }
+    
 }
 
 extension DatabaseManager {
@@ -115,7 +128,7 @@ extension DatabaseManager {
 
         let safeEmail = DatabaseManager.safeEmail(email: currentEmail)
         let ref  = database.child(safeEmail)
-        ref.observeSingleEvent(of: .value) { snapshot in
+        ref.observeSingleEvent(of: .value) { [weak self] snapshot in
             guard var userNode = snapshot.value as? [String:Any] else {
                 completion(false)
                 print("user not found --------------")
@@ -158,9 +171,29 @@ extension DatabaseManager {
                     "is_read":false
                 ]
             ]
-            if var conversations = userNode["conversations"] as? [[String:Any]] {
+            let recipient_newConversationData:[String:Any] = [
+                "id":conversationId,
+                "other_user_email": safeEmail,
+                "name":"self",
+                "latest_message":[
+                    "date":dateString,
+                    "message":message,
+                    "is_read":false
+                ]
+            ]
+            
+            self?.database.child("\(otherUserEmail)/messages").observeSingleEvent(of: .value) { [weak self] dasnapshot in
+                if var conversation = dasnapshot.value as? [[String:Any]] {
+                    conversation.append(recipient_newConversationData)
+                    self?.database.child("\(otherUserEmail)/messages").setValue(conversation)
+                } else {
+                    self?.database.child("\(otherUserEmail)/messages").setValue([recipient_newConversationData])
+                }
+            }
+            
+            if var conversations = userNode["messages"] as? [[String:Any]] {
                 conversations.append(newConversationData)
-                userNode["conversations"] = conversations
+                userNode["messages"] = conversations
                 ref.setValue(userNode) { [ weak self ] error, _ in
                     guard error == nil else {
                         completion(false)
@@ -169,7 +202,7 @@ extension DatabaseManager {
                     self?.finishCreatingConversation(name:name,conversationId: conversationId, firstMessage: firstMessage, completion: completion)
                 }
             }else {
-                userNode["conversations"] = newConversationData
+                userNode["messages"] = newConversationData
                 ref.setValue(userNode) { [weak self] error, _ in
                     guard error == nil else {
                         completion(false)
@@ -236,111 +269,104 @@ extension DatabaseManager {
         }
     }
     
-//    public func getAllConversations(with email: String, completion: @escaping(Result<[Conversation], Error>) -> Void) {
-//        database.child("\(email)/conversations").observeSingleEvent(of: .value) { snapshot in
-//            guard let conversations = snapshot.value as? [[String: Any]] else {
-//                let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Failed to parse conversations"])
-//                completion(.failure(error))
-//                return
-//            }
-//
-//            var result: [Conversation] = []
-//
-//            for conversationData in conversations {
-//                guard let conversationId = conversationData["id"] as? String,
-//                      let latestMessageData = conversationData["latest_message"] as? [String: Any],
-//                      let name = conversationData["name"] as? String,
-//                      let otherUserEmail = conversationData["other_user_email"] as? String else {
-//                    continue
-//                }
-//
-//                guard let date = latestMessageData["date"] as? String,
-//                      let isRead = latestMessageData["is_read"] as? Int,
-//                      let message = latestMessageData["message"] as? String else {
-//                    continue
-//                }
-//
-//                let latestMessageObject = LatestMessage(date: date, isRead: false, message: message)
-//                let conversation = Conversation(id: conversationId, latestMessage: latestMessageObject, name: name, otherUserEmail: otherUserEmail)
-//                result.append(conversation)
-//            }
-//            print("result: -\(result)")
-//            completion(.success(result))
-//        }
-//    }
+
     
-    /// fetches and returns conversation with email from database
-//    public func getAllConversations(with email: String, completion: @escaping(Result<[Conversation], Error>) -> Void) {
-//        database.child("\(email)/conversations").observeSingleEvent(of: .value) { snapshot in
-//            guard let value = snapshot.value as? [[String: Any]] else {
-//                let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Failed to parse conversations"])
-//                completion(.failure(error))
-//                print(snapshot.value)
-//                return
-//
-//            }
-//            let conversations: [Conversation] = value.compactMap { dictionary in
-//                guard let conversationId = dictionary["id"] as? String,
-//                      let latestMessage = dictionary["latest_message"] as? [String: Any],
-//                      let message = latestMessage["message"] as? String,
-//                      let date = latestMessage["date"] as? String,
-//                      let isRead = latestMessage["is_read"] as? Int,
-//                      let name = dictionary["name"] as? String,
-//                      let otherUserEmail = dictionary["other_user_email"] as? String else {
-//                    print("Failed to parse conversation: \(dictionary)")
-//                    return nil
-//                }
-//
-//                let latestMessageObject = LatestMessage(date: date, isRead: isRead, message: message)
-//                return Conversation(id: conversationId, latestMessage: latestMessageObject, name: name, otherUserEmail: otherUserEmail)
-//            }
-//
-//            completion(.success(conversations))
-//        }
-//    }
+    public func getConversation(with email: String, completion: @escaping(Result<[Conversation], Error>) -> Void) {
+        database.child("\(email)/messages").observe(.value) { snapshot in
+            guard let value = snapshot.value as? [[String:Any]] else {
+                completion(.failure(DatabaseError.FailedToFetch))
+                return
+            }
+            print(value)
+            let messages:[Conversation] = value.compactMap { dict in
+                
+                guard let name = dict["name"] as? String,
+                      let id = dict["id"] as? String,
+                      let otherUserEmail = dict["other_user_email"] as? String,
+                      let lateMessage = dict["latest_message"] as? [String:Any],
+                        let date = lateMessage["date"] as? String,
+                        let isRead = lateMessage["is_read"] as? Bool,
+                        let message = lateMessage["message"] as? String else {
+                        return nil
+                    }
+                
+                let latestMessage = LatestMessage(date: date, isRead: isRead, message: message)
+                
+                let conversation = Conversation(id: id, latestMessage: latestMessage, name: name, otherUserEmail: otherUserEmail)
+                print("mcooonvo:\(conversation)")
+                return conversation
+            }
+            completion(.success(messages))
+        }
+    }
     
-    public func getConversation(with email: String, completion: @escaping(Result<Conversation, Error>) -> Void) {
-        database.child("\(email)/conversations").observeSingleEvent(of: .value) { snapshot in
-//            guard let value = snapshot.value as? [String:Any] else {
-//                completion(.failure(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey:"failedtoparse"])))
-//
-//                return
-//            }
-//            do {
-//                let decoder = JSONDecoder()
-//                let data = try decoder.decode(value)
-//            }
-//
-//        }
-        //database.child("\(email)/conversations").getData(completion: <#T##(Error?, DataSnapshot?) -> Void#>)
-            let value = snapshot.value as? NSDictionary
-            let name = value?["name"] as? String ?? ""
-            let id = value?["id"] as? String ?? ""
-            let otherUserEmail = value?["other_user_email"] as? String ?? ""
-            let lateMessage = value?["latest_message"] as? [String:Any]
-            let date = lateMessage?["date"] as? String ?? ""
-            let isRead = lateMessage?["is_read"] as? Bool ?? true
-            let message = lateMessage?["message"] as? String ?? ""
-            
-            let latestMessage = LatestMessage(date: date, isRead: isRead, message: message)
-            let conversations = Conversation(id: id, latestMessage: latestMessage, name: name, otherUserEmail: otherUserEmail)
-            completion(.success(conversations))
-            
+    struct Meessage: Codable {
+        var content: String
+        var date: String
+        var id: String
+        var isRead: Bool
+        var name: String
+        var senderEmail: String
+        var type: String
+        
+        enum CodingKeys: String, CodingKey {
+            case content
+            case date
+            case id
+            case isRead = "is_read"
+            case name
+            case senderEmail = "sender_email"
+            case type
         }
     }
 
 
     /// fetches all messages for given conversation
-    public func getAllMessagesForConversation(with id:String,completion:@escaping(Result<String,Error>) -> Void){
-        
+    public func getAllMessagesForConversation(with id:String, completion:@escaping (Result<[Message], Error>) -> Void){
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, yyyy 'at' h:mm:ss a z"
+        print("id \(id)")
+        database.child("\(id)/messages").observe(.value) { snapshot in
+            guard let value = snapshot.value as? [[String:Any]] else {
+                completion(.failure(DatabaseError.FailedToFetch))
+                return
+            }
+            let messages:[Message] = value.compactMap { dictionary in
+                guard let id = dictionary["id"] as? String,
+                    let content = dictionary["content"] as? String,
+                    let dateString = dictionary["date"] as? String,
+                    let date = ChatViewController.dateFormatter.date(from: dateString),
+                    let isRead = dictionary["is_read"] as? Bool,
+                    let name = dictionary["name"] as? String,
+                    let senderEmail = dictionary["sender_email"] as? String,
+                    let type = dictionary["type"] as? String else {
+                        return nil
+                    }
+                let sender = Sender(photoURL: "", senderId: senderEmail, displayName: name)
+                
+                let message = Message(sender: sender, messageId: id, sentDate: date, kind: .text(content))
+                print("message Id:\(message)")
+                return message
+            }
+            completion(.success(messages))
+            
+        }
+
     }
+                                                   
     /// sends message to target conversation
     public func sendMessage(to conversation:String,message:Message, completion:@escaping(Bool) -> Void){
-        
+
     }
 }
 
 
+
+
+
+                                                   
+                                                   
 struct User{
     let username:String
     let emailAdress:String

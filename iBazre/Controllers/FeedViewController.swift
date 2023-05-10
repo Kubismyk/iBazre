@@ -13,8 +13,14 @@ class FeedViewController: UIViewController {
 
     @IBOutlet weak var feedTableView: UITableView!
     
-    let testData = ["test1","test2","test3"]
     private var conversations = [Conversation]()
+    
+    
+    private var test:[Conversation] = [Conversation(id: "asd", latestMessage: LatestMessage(date: "15 mins ago", isRead: true, message: "👋"), name: "Lauren", otherUserEmail: "mr.mail")]
+    
+    func removeAllConversations() {
+        conversations.removeAll()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,19 +37,25 @@ class FeedViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         validateAuth()
+        startListeningForConversations()
         print("2222222")
     }
     
     private func design(){
         self.title = "Chats"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), landscapeImagePhone: UIImage(systemName: "line.3.horizontal"), style: .done, target: self, action: #selector(openMenu))
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor(named: "MainColor")
     }
     
+    
     @objc func openMenu(){
-        let menu = SideMenuNavigationController(rootViewController: MenuViewController())
+        let menuBefore = MenuViewController()
+        menuBefore.feedViewController = self
+        let menu = SideMenuNavigationController(rootViewController:menuBefore)
         menu.leftSide = true
         present(menu, animated: true, completion: nil)
         print("\(conversations)")
+        startListeningForConversations()
     }
     
     
@@ -66,8 +78,7 @@ class FeedViewController: UIViewController {
         DatabaseManager.shared.getConversation(with: safeEmail) { [weak self] result in
             switch result {
             case .success(let conversations):
-                self?.conversations.append(conversations)
-                print(self?.conversations)
+                self?.conversations = conversations
                 DispatchQueue.main.async {
                     self?.feedTableView.reloadData()
                 }
@@ -92,7 +103,7 @@ class FeedViewController: UIViewController {
               let email = result["mail"] else {
             return
         }
-        let vc = ChatViewController(with: email)
+        let vc = ChatViewController(with: email,id: "nil")
         vc.isNewConversation = true
         let navVc = UINavigationController(rootViewController: vc)
         navVc.modalPresentationStyle = .fullScreen
@@ -123,11 +134,11 @@ extension FeedViewController:UISearchBarDelegate {
 
 extension FeedViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return conversations.count
+        return test.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = conversations[indexPath.row]
+        let model = test[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell {
             cell.config(with: model)
             return cell
@@ -146,9 +157,9 @@ extension FeedViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = conversations[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
-        let vc = UINavigationController(rootViewController: ChatViewController(with: model.otherUserEmail))
+        let vc = UINavigationController(rootViewController: ChatViewController(with: model.otherUserEmail,id: model.id))
         vc.modalPresentationStyle = .fullScreen
-        vc.title = model.name
+        
         self.present(vc, animated: true)
     }
     

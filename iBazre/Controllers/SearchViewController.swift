@@ -64,14 +64,6 @@ class SearchViewController: UIViewController {
         self.noResultLabel.frame = CGRect(x: 50, y: 50, width: 50, height: 50)
     }
     
-//    fileprivate func setupConstraints() {
-//       view.addSubview(tableView)
-//        view.addSubview(noResultLabel)
-//       tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-//       tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-//       tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-//       tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-//    }
     
     @objc func dismissSelf(){
         self.dismiss(animated: true)

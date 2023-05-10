@@ -122,30 +122,6 @@
                                 <color key="textColor" red="0.74117647060000003" green="0.74117647060000003" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="highlightedColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="eCK-Rc-GDP">
-                                <rect key="frame" x="86.5" y="447" width="241" height="48"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmk-i5-ZfL">
-                                        <rect key="frame" x="0.0" y="0.0" width="65" height="48"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjd-Su-qda">
-                                        <rect key="frame" x="88" y="0.0" width="65" height="48"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqh-ux-VPh">
-                                        <rect key="frame" x="176" y="0.0" width="65" height="48"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="241" id="Kdv-3u-wkR"/>
-                                    <constraint firstAttribute="height" constant="48" id="PxM-aU-623"/>
-                                </constraints>
-                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBK-gF-w3n">
                                 <rect key="frame" x="146" y="545" width="248" height="31"/>
                                 <color key="tintColor" name="MyGrey"/>
@@ -159,14 +135,11 @@
                         <viewLayoutGuide key="safeArea" id="hFn-ie-J0Y"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="eCK-Rc-GDP" firstAttribute="centerX" secondItem="NQh-OI-oSd" secondAttribute="centerX" id="6LA-Dv-u4P"/>
                             <constraint firstItem="pva-Uk-CrE" firstAttribute="top" secondItem="hFn-ie-J0Y" secondAttribute="top" id="AOh-9J-f0b"/>
                             <constraint firstItem="mGx-kq-oHS" firstAttribute="top" secondItem="zVI-dB-HYz" secondAttribute="bottom" constant="18" id="C6I-Gb-nmX"/>
                             <constraint firstItem="hFn-ie-J0Y" firstAttribute="trailing" secondItem="pva-Uk-CrE" secondAttribute="trailing" id="Ccg-Ew-o3q"/>
                             <constraint firstItem="ay6-91-acU" firstAttribute="leading" secondItem="NQh-OI-oSd" secondAttribute="leading" constant="223" id="FLq-6z-NIj"/>
                             <constraint firstItem="mGx-kq-oHS" firstAttribute="leading" secondItem="NQh-OI-oSd" secondAttribute="leadingMargin" constant="10" id="Fm5-8l-GRa"/>
-                            <constraint firstItem="IBK-gF-w3n" firstAttribute="top" secondItem="eCK-Rc-GDP" secondAttribute="bottom" constant="50" id="Ppv-YW-Ky1"/>
-                            <constraint firstItem="eCK-Rc-GDP" firstAttribute="top" secondItem="Cat-NE-Mgl" secondAttribute="bottom" constant="20" id="PtJ-nT-Y51"/>
                             <constraint firstItem="Cat-NE-Mgl" firstAttribute="top" secondItem="zVI-dB-HYz" secondAttribute="bottom" constant="9" id="TeE-rz-xlG"/>
                             <constraint firstItem="zVI-dB-HYz" firstAttribute="leading" secondItem="hFn-ie-J0Y" secondAttribute="leading" constant="30" id="V5G-Iz-mHO"/>
                             <constraint firstItem="pva-Uk-CrE" firstAttribute="leading" secondItem="hFn-ie-J0Y" secondAttribute="leading" id="Vs3-qL-NO6"/>
@@ -174,6 +147,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="ay6-91-acU" secondAttribute="trailing" constant="10" id="i1q-qX-JHU"/>
                             <constraint firstItem="hFn-ie-J0Y" firstAttribute="trailing" secondItem="IBK-gF-w3n" secondAttribute="trailing" constant="20" id="mFC-Cf-rdb"/>
                             <constraint firstItem="ay6-91-acU" firstAttribute="top" secondItem="zVI-dB-HYz" secondAttribute="bottom" constant="18" id="nJE-oh-Yhg"/>
+                            <constraint firstItem="hFn-ie-J0Y" firstAttribute="bottom" secondItem="IBK-gF-w3n" secondAttribute="bottom" constant="286" id="nOQ-I0-s7r"/>
                             <constraint firstItem="zVI-dB-HYz" firstAttribute="top" secondItem="pva-Uk-CrE" secondAttribute="bottom" constant="-50" id="tty-eg-rNN"/>
                             <constraint firstItem="hFn-ie-J0Y" firstAttribute="trailing" secondItem="zVI-dB-HYz" secondAttribute="trailing" constant="30" id="y2F-Zu-qI5"/>
                             <constraint firstItem="Cat-NE-Mgl" firstAttribute="centerX" secondItem="NQh-OI-oSd" secondAttribute="centerX" id="yyS-ah-KHb"/>

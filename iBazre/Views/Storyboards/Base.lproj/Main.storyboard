@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -42,6 +43,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="nol-j0-ahm" kind="relationship" relationship="viewControllers" id="57U-zN-GnR"/>
@@ -98,12 +101,14 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="jhJ-E1-B5f">
                                 <rect key="frame" x="347.5" y="5" width="46.5" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" name="MainColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
                                 <connections>
                                     <action selector="newConversationButton:" destination="8WL-9Z-FyN" eventType="touchUpInside" id="an9-pO-9Jw"/>
                                 </connections>
                             </button>
+                            <color key="tintColor" name="MainColor"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -115,11 +120,11 @@
             </objects>
             <point key="canvasLocation" x="2968.115942028986" y="-910.04464285714278"/>
         </scene>
-        <!--Item-->
+        <!--Feed-->
         <scene sceneID="3hz-50-NXz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nol-j0-ahm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="StP-hq-J1s"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="homekit" catalog="system" selectedImage="homekit" id="StP-hq-J1s"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ruf-A4-XS7">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -221,11 +226,11 @@
             </objects>
             <point key="canvasLocation" x="2968.115942028986" y="-166.07142857142856"/>
         </scene>
-        <!--Item-->
+        <!--Profile-->
         <scene sceneID="fRH-rO-qOt">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="gdj-Ou-hpH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="j7z-8K-ioP"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="j7z-8K-ioP"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="roI-3n-h98">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -242,7 +247,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="homekit" catalog="system" width="128" height="106"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <namedColor name="MainColor">
+            <color red="0.22352941176470589" green="0.79607843137254897" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

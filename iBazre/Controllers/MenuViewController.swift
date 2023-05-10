@@ -8,7 +8,13 @@
 import UIKit
 import FirebaseAuth
 
+protocol MenuViewControllerDelegate: AnyObject {
+    func removePropertyFromConversations(_ property: Conversation)
+}
+
 class MenuViewController: UIViewController {
+    
+    weak var feedViewController: FeedViewController?
     
     private var logOutButton:UIButton {
         let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
@@ -26,6 +32,11 @@ class MenuViewController: UIViewController {
         self.view.addSubview(logOutButton)
     }
     
+    func removeConversations() {
+        feedViewController?.removeAllConversations()
+        feedViewController?.feedTableView.reloadData()
+    }
+    
     
     private func logOutAlert(){
         let alertController = UIAlertController(title: "Sign out?", message: "You can always access your content by logging back", preferredStyle: .alert)
@@ -35,6 +46,8 @@ class MenuViewController: UIViewController {
             let firebaseAuth = Auth.auth()
             do {
                 try firebaseAuth.signOut()
+                self.removeConversations()
+                UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
                 let storyboard = UIStoryboard(name: "LoginAndRegisterStoryboard", bundle: nil)
                 let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
                 vc.modalPresentationStyle = .fullScreen

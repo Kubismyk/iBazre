@@ -13,13 +13,14 @@ import JGProgressHUD
 class ProfileViewController: UIViewController {
 
     let spinner = JGProgressHUD(style: .dark)
+    let mail = UserDefaults.standard.value(forKey: "email") as? String ?? "test@mail.ru"
     
     @IBOutlet weak var profileBackground: UIView!
     @IBOutlet weak var profilePicture: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Profile"
+        self.title = mail
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus.magnifyingglass"), landscapeImagePhone: UIImage(systemName: "plus.magnifyingglass"), style: .done, target: self, action: #selector(goToSearch))
         design()
         pfp()
@@ -62,6 +63,7 @@ class ProfileViewController: UIViewController {
             }
         }.resume()
     }
+    
     
     
     
@@ -130,7 +132,8 @@ extension ProfileViewController: UIImagePickerControllerDelegate,UINavigationCon
         
         let storageManager = StorageManager()
         let userID = Auth.auth().currentUser!.uid // to add to current uid storage
-        let fileName = "\(userID)_profile_picture.png"
+        let safeEmail = DatabaseManager.safeEmail(email: self.mail)
+        let fileName = "\(safeEmail)_profile_picture.png"
         
 
         storageManager.uploadPFP(with: data, fileName: fileName) { result in

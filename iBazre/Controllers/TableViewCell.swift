@@ -29,11 +29,16 @@ class TableViewCell: UITableViewCell {
     }
     
     public func config(with data:Conversation){
+        testImage.layer.masksToBounds = false
+        testImage.layer.borderColor = UIColor.black.cgColor
+        testImage.layer.cornerRadius = testImage.frame.height/2
+        testImage.clipsToBounds = true
         self.lastText.text = data.latestMessage.message
         self.ttest.text = data.name
         self.date.text = data.latestMessage.date
+        //self.testImage.image = data.
         
-        let path = "\(data.otherUserEmail)_profile_picture.png"
+        let path = "images/\(data.otherUserEmail)_profile_picture.png"
         StorageManager.shared.requestDownload(for: path) { [weak self] result in
             switch result{
             case .success(let url):
@@ -47,3 +52,6 @@ class TableViewCell: UITableViewCell {
     }
     
 }
+
+
+
